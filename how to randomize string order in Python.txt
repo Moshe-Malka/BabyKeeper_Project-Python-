@@ -1,0 +1,4 @@
+>>> import random
+>>> s="abcdef123"
+>>> ''.join(random.sample(s,len(s)))
+'1f2bde3ac'
