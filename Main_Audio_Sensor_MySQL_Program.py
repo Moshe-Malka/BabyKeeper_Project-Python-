@@ -2,17 +2,40 @@ import sys
 import pyaudio
 import math
 import struct
+import mysql.connector
 import time
-import paho.mqtt.publish as publish
+from raspberry_pi_unique_product_key import getRaspberryPiID
+
+# MySQL Variables
+MYSQL_HOST = 'sql7.freesqldatabase.com'
+MYSQL_USERNAME = 'sql7118146'
+MYSQL_PASSWORD = 'rmWVntI87f'
+MYSQL_DB = 'sql7118146'
 
 # Instantiate PyAudio
 p = pyaudio.PyAudio()
 
 # output file
-file = open("out.txt","w")
+#file = open("out.txt","w")
 
 HOSTNAME = "test.mosquitto.org"
 PORT = 1883
+
+# This function inserts received data into mysql database - Adjust parameters for your server
+def insert_data(table,value):
+    my_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    rpi_id = getRaspberryPiID()
+    conn = mysql.connector.connect(
+        host=MYSQL_HOST, # Enter your Mysql Server ip
+        user=MYSQL_USERNAME, # Enter your mysql username
+        password=MYSQL_PASSWORD, # Enter your mysql password
+        database=MYSQL_DB)
+    cursor = conn.cursor()
+    cursor.execute("""INSERT INTO %s VALUES( '%s','%d','%s')"""
+                   % (table,my_time,value,rpi_id))
+    conn.commit()
+    cursor.close()
+    conn.close()
 
 # Define callback
 def callback(in_data, frame_count, time_info, status):
@@ -34,9 +57,10 @@ def print_audio_level(in_data, callback_time):
         sys.stdout.flush()
 
 	s = abs(level)
-	if s > 60:
-		publish.single("babykeeper/sound" ,s ,0 ,False ,HOSTNAME ,PORT) 
-	file.write(str(s)+"\n")
+        insert_data('sound_log',s)
+
+	#file.write(str(s)+"\n")
+	
 	
 def get_level_dB(sample_value):
     MAX_SAMPLE_VALUE = 32768

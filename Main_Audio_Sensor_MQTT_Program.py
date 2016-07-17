@@ -9,7 +9,7 @@ import paho.mqtt.publish as publish
 p = pyaudio.PyAudio()
 
 # output file
-file = open("out.txt","w")
+#file = open("out.txt","w")
 
 HOSTNAME = "test.mosquitto.org"
 PORT = 1883
@@ -35,8 +35,9 @@ def print_audio_level(in_data, callback_time):
 
 	s = abs(level)
 	if s > 60:
-		publish.single("babykeeper/sound" ,s ,0 ,False ,HOSTNAME ,PORT) 
-	file.write(str(s)+"\n")
+		publish.single("babykeeper/sound" ,s ,0 ,False ,HOSTNAME ,PORT)
+	#file.write(str(s)+"\n")
+	
 	
 def get_level_dB(sample_value):
     MAX_SAMPLE_VALUE = 32768

@@ -21,7 +21,8 @@ dayOfMonth = datetime.datetime.now()
 
 def decryptMessage(message):
 	message = message
-	key = dayOfMonth.day
+	#key = dayOfMonth.day
+	key=16
 	letters = "8&YC9ZvMaxP@wOz|%*sf3QN0G/cp+U5$>gDorLmhE1l#eJ,*yWbdB_2KV(n=i?HSuX^{TI4;jq}'FA[:).t!<kR]67"
 	letterslen = len(letters)
 	translated = ""
