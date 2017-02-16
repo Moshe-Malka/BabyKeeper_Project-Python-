@@ -7,10 +7,10 @@ import time
 from raspberry_pi_unique_product_key import getRaspberryPiID
 
 # MySQL Variables
-MYSQL_HOST = 'sql7.freesqldatabase.com'
-MYSQL_USERNAME = 'sql7118146'
-MYSQL_PASSWORD = 'rmWVntI87f'
-MYSQL_DB = 'sql7118146'
+MYSQL_HOST = #youre DB connection link
+MYSQL_USERNAME = #youre DB connection username
+MYSQL_PASSWORD = #youre DB connection password
+MYSQL_DB = #youre DB connection database name
 
 # Instantiate PyAudio
 p = pyaudio.PyAudio()
