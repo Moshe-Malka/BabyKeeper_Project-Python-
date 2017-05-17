@@ -227,10 +227,10 @@ if __name__ == "__main__":
     cursor.close()
     conn.close()
 
-   MYSQL_HOST = 'sql7.freesqldatabase.com'
-   MYSQL_USERNAME = 'sql7118146'
-   MYSQL_PASSWORD = 'rmWVntI87f'
-   MYSQL_DB = 'sql7118146'
+   MYSQL_HOST = ''
+   MYSQL_USERNAME = ''
+   MYSQL_PASSWORD = ''
+   MYSQL_DB = ''
       
    # Intervals of about 2 seconds or less will eventually hang the DHT22.
    INTERVAL=3
