@@ -8,10 +8,10 @@ from raspberry_pi_unique_product_key import getRaspberryPiID
 #value = temperature / humidity / sound value
 #rpi_id = raspberry pi unique product key
 
-MYSQL_HOST = 'sql7.freesqldatabase.com'
-MYSQL_USERNAME = 'sql7118146'
-MYSQL_PASSWORD = 'rmWVntI87f'
-MYSQL_DB = 'sql7118146'
+MYSQL_HOST = ''
+MYSQL_USERNAME = ''
+MYSQL_PASSWORD = ''
+MYSQL_DB = ''
 
 
 # This function inserts received data into mysql database - Adjust parameters for your server
